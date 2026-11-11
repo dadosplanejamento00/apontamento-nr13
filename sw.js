@@ -1,5 +1,5 @@
 // Guarda o app no tablet para abrir sem internet. As chamadas ao sistema (script.google.com) não passam pelo cache.
-const CACHE='apontamento-nr13-v3';
+const CACHE='apontamento-nr13-v4';
 const ARQ=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./apple-touch-icon.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ARQ)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
